@@ -7,8 +7,8 @@ conn = wr.postgresql.connect("rds-connection-saber")
 
 def lambda_handler(event=None, context=None):
     
-    df_table1 = wr.s3.read_parquet(path='s3://learnit2022-saber-hosseinzade/clean_zone/learnit2022-db/customer-table/customer.parquet/')
-    df_table2 = wr.s3.read_parquet(path='s3://learnit2022-saber-hosseinzade/clean_zone/learnit2022-db/city-table/city.parquet/')
+    df_table1 = wr.s3.read_parquet(path='s3://saber-hosseinzade/clean_zone/db/customer-table/customer.parquet/')
+    df_table2 = wr.s3.read_parquet(path='s3://saber-hosseinzade/clean_zone/db/city-table/city.parquet/')
     
     df_merge = pd.merge(
         df_table1,
@@ -42,9 +42,9 @@ def lambda_handler(event=None, context=None):
             
     
     
-    db_name = 'learnit2022-db-curated'
+    db_name = 'db-curated'
     table_name = 'join-table'
-    output_path = 's3://learnit2022-saber-hosseinzade/curated_zone/learnit2022-db-curated/join-table/customers-join.parquet'
+    output_path = 's3://saber-hosseinzade/curated_zone/db-curated/join-table/customers-join.parquet'
     
     current_databases = wr.catalog.databases()
 
