@@ -7,7 +7,7 @@ import sql_create_tables
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-con = wr.postgresql.connect("learnit2022-saber-rds-pagila")
+con = wr.postgresql.connect("saber-rds-pagila")
 
 def lambda_handler(event, context):
     
